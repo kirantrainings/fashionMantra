@@ -1,7 +1,12 @@
 var express = require("express");
-module.exports=function(){
-  var app = express();
-  console.log("Express Initiatlized");
-  require("../routes/index.route.js")(app);
-  return app;
+
+module.exports = function () {
+    var app = express();
+    app.set("views", "./app/views");
+    app.set("view engine", "ejs");
+
+    app.use(express.static("./public"))
+    console.log("Express Initiatlized");
+    require("../routes/index.route")(app);
+    return app;
 };

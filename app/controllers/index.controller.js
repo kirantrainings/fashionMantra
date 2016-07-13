@@ -1,5 +1,6 @@
-var homePage = function(req,res){
-  console.log("controller initialed");
-  res.send("Hello I am the home page");
+var homePage = function (req, res) {
+    res.render("index", {
+        title: "FashionMantra"
+    });
 };
-exports.render= homePage;
+exports.render = homePage;
