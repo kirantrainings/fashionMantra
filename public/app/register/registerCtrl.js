@@ -1,8 +1,13 @@
 angular.module("register")
-    .controller("registerCtrl", ["$scope", function ($scope) {
+    .controller("registerCtrl", ["$scope", "registerSvc", function ($scope, registerSvc) {
         $scope.user = {};
         $scope.registerUser = function () {
-            console.log($scope.user);
+            registerSvc.register($scope.user)
+                .then(function (response) {
+                    console.log("reistered user");
+                }).catch(function (response) {
+
+                })
         };
         $scope.loadStates = function () {
             $scope.stateList = [];
