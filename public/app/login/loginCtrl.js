@@ -1,9 +1,16 @@
 angular.module("login")
-    .controller("loginCtrl", [function () {
-        this.loginData = {
-            email: "pvskiran@gmail.com"
+    .controller("loginCtrl", ["registerSvc", "$scope", function (registerSvc, $scope) {
+        $scope.loginData = {
+            username: "",
+            password: ""
         };
-        this.loginUser = function () {
-            console.log(this.loginData);
+        $scope.loginUser = function () {
+            registerSvc.authenticate($scope.loginData)
+                .then(function (response) {
+                    console.log(response);
+                })
+                .catch(function (response) {
+                    console.log(response);
+                });
         };
 }]);

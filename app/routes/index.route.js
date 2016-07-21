@@ -3,13 +3,11 @@
 module.exports = function (app) {
     console.log("Route Initialized");
     var index = require("../controllers/index.controller");
-    var about = require("../controllers/about.controller");
-    var contact = require("../controllers/contact.controller");
-    var register = require("../controllers/register.controller");
+    var register =
+        require("../controllers/register.controller");
     app.get("/", index.render);
-    app.get("/about", about.render);
-    app.get("/contact", contact.render);
-
     app.post('/api/register', register.registerUser);
     app.post('/api/login', register.login);
+    app.get("/api/getAllUsers", register.getProfiles);
+    app.post("/api/authenticateUser",register.getUserDetails);
 };

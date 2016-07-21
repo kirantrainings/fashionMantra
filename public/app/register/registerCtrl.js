@@ -2,6 +2,8 @@ angular.module("register")
     .controller("registerCtrl", ["$scope", "registerSvc", function ($scope, registerSvc) {
         $scope.user = {};
         $scope.registerUser = function () {
+            $scope.user.country = $scope.selectedCountry.code;
+
             registerSvc.register($scope.user)
                 .then(function (response) {
                     console.log("reistered user");
@@ -992,7 +994,8 @@ angular.module("register")
                 "code": "ZW"
             }
 ];
-        var states = [{
+        var states = [
+            {
                 "countrycode": "IN",
                 "statename": "Telangana",
                 "statecode": "TG"
@@ -1017,4 +1020,10 @@ angular.module("register")
                 "statename": "Texas",
                 "statecode": "TX"
             }]
+
+        registerSvc.getProfiles().then(function (response) {
+            console.log(response);
+        }).catch(function (response) {
+            console.log(response);
+        })
 }]);
