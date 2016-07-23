@@ -1,8 +1,11 @@
-var config = require('./app/config/config');
-var port = config.port;
+//get the configuration file
+// it is having port and the connection string for db
+var config = require("./app/config/config");
 var mongoose = require("./app/config/mongoose");
-var expressServer = require('./app/config/express');
 mongoose();
-var app = expressServer();
-app.listen(port);
-console.log("http://locahost:" + port);
+
+//set the express framework
+var express = require("./app/config/express");
+var app = express();
+app.listen(config.port);
+console.log("server running at port" + config.port);

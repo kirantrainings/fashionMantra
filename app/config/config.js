@@ -1,6 +1,6 @@
-var configuration = {
+var config = {
     port: 3000,
-    connectionstring: 'mongodb://localhost:27017/fashionmantra'
+    dbconnection: "mongodb://localhost:27017/fashionmantra"
 };
 
-module.exports = configuration;
+module.exports = config;
