@@ -2,8 +2,11 @@
 //download the body parser
 var express = require('express');
 var bodyParser = require('body-parser');
+var passport = require("passport");
+var session = require("express-session");
+var flash = require('connect-flash');
 //
-module.exports = function () {
+module.exports = function() {
     var app = express();
 
 
@@ -15,6 +18,13 @@ module.exports = function () {
     // parse application/json
     app.use(bodyParser.json());
 
+    app.use(session({
+        saveUninitialized: true,
+        resave: true,
+        secret: 'OurSuperSecretCookieSecret'
+    }));
+    //initialize passport 
+    app.use(passport.initialize());
 
     //set the view engine
     app.set("views", "./app/views");
