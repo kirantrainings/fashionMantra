@@ -6,7 +6,7 @@ var passport = require("passport");
 var session = require("express-session");
 var flash = require('connect-flash');
 //
-module.exports = function() {
+module.exports = function () {
     var app = express();
 
 
@@ -37,5 +37,7 @@ module.exports = function() {
     require("../routes/about.route")(app);
     require("../routes/user.route")(app);
     require("../routes/product.route")(app);
+    require("../routes/file.route")(app);
+    require("../routes/wallmart.route")(app);
     return app;
 };
